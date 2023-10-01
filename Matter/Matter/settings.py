@@ -132,3 +132,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Tell Django that we are using the new user model
 AUTH_USER_MODEL = 'user.CustomUser' 
+
+# If not specified, this setting defaults to allowing unrestricted access to any views
+REST_FRAMEWORK = {
+'DEFAULT_PERMISSION_CLASSES': [
+   'rest_framework.permissions.AllowAny',
+    ]
+}
