@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from user.models import CustomUser
 
-
+# Serialize account POST, GET, RETRIEVE, DESTROY request
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser

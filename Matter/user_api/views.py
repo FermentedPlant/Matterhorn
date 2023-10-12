@@ -1,6 +1,6 @@
 from user.models import CustomUser
 from . serializers import UserSerializer
-from . permissions import IsOwnerOrReadOnly
+from . permissions import CustomIsAuthenticated
 from rest_framework.generics import CreateAPIView, RetrieveAPIView, RetrieveDestroyAPIView, RetrieveUpdateAPIView
 
 # If you are creating an object, just POST to /api/ URL. 
@@ -10,19 +10,19 @@ class CustomUserCreate(CreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer 
 
-class CustomUserRetrieve(RetrieveAPIView, IsOwnerOrReadOnly):
+class CustomUserRetrieve(RetrieveAPIView, CustomIsAuthenticated):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [CustomIsAuthenticated]
 
-class CustomUserDestroy(RetrieveDestroyAPIView, IsOwnerOrReadOnly):
+class CustomUserDestroy(RetrieveDestroyAPIView, CustomIsAuthenticated):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [CustomIsAuthenticated]
 
-class CustomUserUpdate(RetrieveUpdateAPIView, IsOwnerOrReadOnly):
+class CustomUserUpdate(RetrieveUpdateAPIView, CustomIsAuthenticated):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [CustomIsAuthenticated]
 
     # update() in View deals more with HTTP Response part
