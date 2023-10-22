@@ -20,6 +20,14 @@ services:
     depends_on:
       - postgres
 
+  nodejs:
+    container_name: nodejs_container
+    build: ./frontmatter
+    volumes:
+      - ./frontmatter:/nodejs_app
+    ports:
+      - 3000:3000
+
   postgres:
     container_name: postgres_container
     image: postgres
